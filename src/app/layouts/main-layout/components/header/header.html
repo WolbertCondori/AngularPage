@@ -1,0 +1,39 @@
+<div id="head" class="position-relative">
+    <section class="border border-bottom border-1">
+        <div id="header-top">
+            <div id="header-top-star">
+                <p>
+                    <i class="bi bi-headphones"></i> Call us for free:
+                    <a href="tel:+18001234567" class="text-primary link-secondary fw-semibold text-decoration-none">+1(800)
+                        123 4567</a>
+                </p>
+                <p>Free Shipping on Orders <span class="fw-semibold">$50+</span></p>
+            </div>
+            <div id="header-top-end">
+                <button class="btn" (click)="toggleMoneda()">
+                    <i class="bi bi-currency-dollar"></i>
+                    EUR
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <button class="btn">
+                    <i class="bi bi-globe2"></i>
+                    Español
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <button class="btn" (click)="toggleLogin()">
+                    <i class="bi bi-person"></i>
+                    My account:
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section></section>
+    <section></section>
+</div>
+@if (openMoneda()) {
+    <app-moneda (openMonedaDesdeHeader)="toggleMoneda()"></app-moneda>
+}
+@if(openLogin()){
+    <app-login (closeLoginDesdeHeader)="toggleLogin()"></app-login>
+}

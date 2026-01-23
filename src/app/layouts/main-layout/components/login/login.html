@@ -1,0 +1,143 @@
+<div id="container">
+
+    <div class="content">
+
+        @if (esLogin) {
+            <form [formGroup]="formLogin" class="info py-4 px-4 bg-white rounded-3 shadow-sm position-relative"
+                  (ngSubmit)="iniciarSesion()">
+                <button type="button" class="btn btn-danger close-btn" (click)="closeLoginDesdeHeader.emit()">
+                    <i class="bi bi-x-lg text-white"></i>
+                </button>
+
+                <div class="mb-3">
+                    <h2 class="h4 mb-0 pb-3 border-bottom text-center">Iniciar sesión</h2>
+                </div>
+                <div class="d-flex flex-row flex-nowrap align-items-center justify-content-around gap-3 mb-4">
+                    <button type="button" class="btn btn-sm" [ngClass]="esCorreo ? 'btn-dark':'btn-outline-dark'"
+                            (click)="cambiarSesion(true)">correo electronico
+                    </button>
+                    <button type="button" class="btn btn-sm" [ngClass]="!esCorreo ? 'btn-dark':'btn-outline-dark'"
+                            (click)="cambiarSesion(false)">telefono
+                    </button>
+                </div>
+                @if (esCorreo) {
+                    <div class="mb-3 form-floating">
+                        <input formControlName="email" type="text" id="inputEmail" class="form-control"
+                               placeholder="...@example.com
+">
+                        <label class="form-label" for="inputEmail">Correo electrónico</label>
+                    </div>
+                } @else {
+                    <div class="mb-3 form-floating">
+                        <input formControlName="telefono" type="text" id="inputPhone" class="form-control"
+                               placeholder=".123-456-789
+">
+                        <label class="form-label" for="inputPhone">Telefono</label>
+                    </div>
+                }
+                <div class="mb-3 form-floating">
+                    <input formControlName="password" type="password" id="passwordLogin" class="form-control"
+                           placeholder="******">
+                    <label class="form-label" for="passwordLogin">Contraseña</label>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary d-block text-white py-2 w-100"
+                            [disabled]="formLogin.invalid">Entrar
+                    </button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary d-block text-white py-2 w-100"
+                            (click)="cambiarLogin(false)">
+                        Crear Cuenta
+                    </button>
+                </div>
+            </form>
+        } @else {
+            <form [formGroup]="formRegister" class="case info py-4 px-4 bg-white rounded-3 shadow-sm position-relative"
+                  (ngSubmit)="registrar()">
+                    <button type="button" class="btn btn-danger close-btn" (click)="closeLoginDesdeHeader.emit()">
+                        <i class="bi bi-x-lg text-white"></i>
+                    </button>
+
+                    <div class="mb-3">
+                        <h2 class="h4 mb-0 pb-3 border-bottom text-center">Registrarse</h2>
+                    </div>
+                    <section class="overflow-auto position-relative info case mb-3">
+                    <div class="mb-3 form-floating">
+                        <input formControlName="email" type="text" id="inputEmail2" class="form-control"
+                               placeholder="...@example.com
+">
+                        <label class="form-label" for="inputEmail2">Correo electrónico</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="telefono" type="text" id="inputPhone" class="form-control"
+                               placeholder=".123-456-789
+">
+                        <label class="form-label" for="inputPhone">Telefono</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="password1" type="text" id="inputPassword1" class="form-control"
+                               placeholder="********
+">
+                        <label class="form-label" for="inputPassword1">Contraseña</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="password2" type="text" id="inputPassword2" class="form-control"
+                               placeholder="********
+">
+                        <label class="form-label" for="inputPassword2">Repetir Contraseña</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="direccion" type="text" id="inputDirection" class="form-control"
+                               placeholder="Direccion
+">
+                        <label class="form-label" for="inputDirection">Direccion</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="nombre" type="text" id="inputNombre" class="form-control"
+                               placeholder="Nombre
+">
+                        <label class="form-label" for="inputNombre">Nombre</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="apellidos" type="text" id="inputApellidos" class="form-control"
+                               placeholder="Apellidos
+">
+                        <label class="form-label" for="inputApellidos">Apellidos</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="edad" type="number" id="inputEdad" class="form-control"
+                               placeholder="Edad
+">
+                        <label class="form-label" for="inputEdad">edad</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <select formControlName="ciudad" class="form-control justify-content-center align-items-center">
+                            <option value="" selected>Seleccione una Ciudad</option>
+                            @for (ciudad of ciudades; track ciudad.slug) {
+                                <option value="{{ciudad.slug}}">{{ ciudad.nombre }}</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input formControlName="pais" type="text" id="inputPais" class="form-control"
+                               placeholder="Pais">
+                        <label class="form-label" for="inputPais">Pais</label>
+                    </div>
+                    </section>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary d-block text-white py-2 w-100"
+                            [disabled]="formRegister.invalid">Entrar
+                    </button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-primary d-block text-white py-2 w-100"
+                            (click)="cambiarLogin(true)">
+                        Iniciar Sesión
+                    </button>
+                </div>
+            </form>
+        }
+    </div>
+
+</div>

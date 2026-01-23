@@ -1,0 +1,28 @@
+#head{
+  display: grid;
+  grid-template-rows: auto auto auto ;
+}
+#header-top{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  padding: 12px 0;
+  height: 100%;
+}
+#header-top-star{
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  gap: 40px;
+  padding: 0 15px;
+  p{
+    margin: 0;
+    font-size: 12.85px;
+    align-self: center;
+  }
+}
+#header-top-end{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: end;
+  gap: 28px;
+}

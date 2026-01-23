@@ -1,0 +1,48 @@
+<div>
+    <div class="anuncio-container">
+        <div class="img-container">
+            <div>
+                <img src="/img/tivi.png" alt="tivi.jpg">
+            </div>
+            <div>
+                <div class="content">
+                    <div class="box-title">
+                        <h1 class="fw-normal">
+                            <a class="link">
+                                GameConsole
+                                Destiny Special Edition
+                            </a>
+                        </h1>
+                        <div class="box-price">
+                            <del class="h5 text-white">$80.000</del>
+                            <h3 class="fw-semibold text-warning">$60.000</h3>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="text-white">Shop now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="productos">
+        @for (item of items; track item.name) {
+            <div class="producto">
+                <div class="bg-white p-4">
+                <img src='{{ item.img }}' alt="imagen del producto {{item.name}}">
+                </div>
+                <p class="description">{{ item.category }}</p>
+                <p class="h5">{{ item.name }}</p>
+                <p>{{ item.description }}</p>
+                <section>
+                    <h4>${{ item.price }}</h4>
+                    <button class="btn btn-warning">
+                        purchase
+                    </button>
+                </section>
+            </div>
+        } @empty {
+            <li>There are no items.</li>
+        }
+    </div>
+</div>
