@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 })
 export class AlertasService {
     showLoader(title:string="Cargando...",description:string="Espere unos segundos"):void{
-        Swal.fire({
+        /*Swal({
             title:title,
             text:description,
             showConfirmButton:false,
@@ -15,7 +15,7 @@ export class AlertasService {
             didOpen:()=>{
                 Swal.showLoading()
             }
-        })
+        })*/
     }
 
     confirm(title:string,description:string,confirmText:string="¿Estas seguro?",
