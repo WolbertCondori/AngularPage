@@ -5,6 +5,9 @@ import {CiudadesService} from "../../../../core/services/ciudades/ciudades.servi
 import {AuthService} from "../../../../core/services/usuarios/auth.service";
 import {AuthCookieService} from "../../../../core/services/cookies/auth-cookie.service";
 import {SessionStorageService} from "../../../../core/services/sessions/session-storage.service";
+import {checkPasswordValidator} from "../../../../core/validators/password.validator";
+import {validateEmail} from "../../../../core/validators/email.validator";
+import {validarEdad} from "../../../../core/validators/edad.validator";
 
 type DatosDeEnvio={
     email?: string,
@@ -33,21 +36,21 @@ export class Login implements OnInit{
         private ciudadesService:CiudadesService,
         private authService:AuthService,
         private authCookieService : AuthCookieService,
-        private sessionStorageService:SessionStorageService,
+        private sessionStorageService:SessionStorageService
         ) {
         this.formLogin=this.formBuilder.group({
-            "email":["",[Validators.email,Validators.minLength(5)]],
+            "email":["",[Validators.email,validateEmail]],
             "telefono":["",[Validators.maxLength(11)]],
-            "password":["",[Validators.required,Validators.minLength(6)]],
+            "password":["",[Validators.required,Validators.minLength(5),checkPasswordValidator]],
         })
         this.formRegister=this.formBuilder.group({
-            "email":["",[Validators.required]],
+            "email":["",[Validators.required,validateEmail]],
             "telefono":["",[Validators.required]],
-            "password1":["",[Validators.required]],
+            "password1":["",[Validators.required,Validators.minLength(5),checkPasswordValidator]],
             "password2":["",[Validators.required]],
             "nombre":["",[Validators.required]],
             "apellidos":["",[Validators.required]],
-            "edad":["",[Validators.required]],
+            "edad":["",[Validators.required,validarEdad]],
             "ciudad":["",[Validators.required]],
             "pais":["",[Validators.required]],
             "direccion":["",[Validators.required]],

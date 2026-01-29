@@ -5,7 +5,7 @@ export const routes: Routes = [
         path: "", loadComponent: () => import("./layouts/main-layout/main-layout").then(c => c.MainLayout),
         children: [
             {
-                path: "",loadComponent:()=>import("../../public/img/pagina-principal").then(c=>c.PaginaPrincipal),
+                path: "",loadComponent:()=>import("./features/pagina-principal/pagina-principal").then(c=>c.PaginaPrincipal),
             }
         ]
     },

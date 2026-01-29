@@ -23,9 +23,22 @@
                 @if (esCorreo) {
                     <div class="mb-3 form-floating">
                         <input formControlName="email" type="text" id="inputEmail" class="form-control"
-                               placeholder="...@example.com
-">
+                               placeholder="...@example.com" [ngClass]="[
+                               formLogin.get('email')?.touched&&formLogin.get('email')?.errors? 'is-invalid':'',
+                               formLogin.get('email')?.touched&&!formLogin.get('email')?.errors ? 'is-valid':''
+                               ]">
                         <label class="form-label" for="inputEmail">Correo electrónico</label>
+                        @if (formLogin.get("email")?.touched) {
+                            @if (formLogin.get("email")?.errors?.['required']) {
+                                <div>El campo es Obligatorio</div>
+                            }
+                            @if (formLogin.get("email")?.errors?.['emailValidator']) {
+                                <div>Solo Aceptamos gmail, hotmail, doe</div>
+                            }
+                            @if (formLogin.get("email")?.errors?.["extention"]) {
+                                <div>Extension no valida</div>
+                            }
+                        }
                     </div>
                 } @else {
                     <div class="mb-3 form-floating">
@@ -37,8 +50,22 @@
                 }
                 <div class="mb-3 form-floating">
                     <input formControlName="password" type="password" id="passwordLogin" class="form-control"
-                           placeholder="******">
+                           placeholder="******" [ngClass]="[
+                               formLogin.get('password')?.touched&&formLogin.get('password')?.errors ? 'is-invalid':'',
+                               formLogin.get('password')?.touched&&!formLogin.get('password')?.errors ? 'is-valid':''
+                               ]">
                     <label class="form-label" for="passwordLogin">Contraseña</label>
+                    @if (formLogin.get('password')?.touched) {
+                        @if (formLogin.get("password")?.errors?.["required"]) {
+                            <div>Este campo es Obligatio</div>
+                        }
+                        @if (formLogin.get("password")?.errors?.["minlength"]) {
+                            <div>La contraseña debe de tener al menos 5 dígitos</div>
+                        }
+                        @if (formLogin.get("password")?.errors?.["customPassword"]) {
+                            <div>La contraseña debe tener al menos una minúscula, una mayúscula y un numero.</div>
+                        }
+                    }
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary d-block text-white py-2 w-100"
@@ -55,19 +82,29 @@
         } @else {
             <form [formGroup]="formRegister" class="case info py-4 px-4 bg-white rounded-3 shadow-sm position-relative"
                   (ngSubmit)="registrar()">
-                    <button type="button" class="btn btn-danger close-btn" (click)="closeLoginDesdeHeader.emit()">
-                        <i class="bi bi-x-lg text-white"></i>
-                    </button>
+                <button type="button" class="btn btn-danger close-btn" (click)="closeLoginDesdeHeader.emit()">
+                    <i class="bi bi-x-lg text-white"></i>
+                </button>
 
-                    <div class="mb-3">
-                        <h2 class="h4 mb-0 pb-3 border-bottom text-center">Registrarse</h2>
-                    </div>
-                    <section class="overflow-auto position-relative info case mb-3">
+                <div class="mb-3">
+                    <h2 class="h4 mb-0 pb-3 border-bottom text-center">Registrarse</h2>
+                </div>
+                <section class="overflow-auto position-relative info case mb-3">
                     <div class="mb-3 form-floating">
                         <input formControlName="email" type="text" id="inputEmail2" class="form-control"
-                               placeholder="...@example.com
-">
+                               placeholder="...@example.com" [ngClass]="[
+                               formRegister.get('email')?.touched&&formRegister.get('email')?.errors ? 'is-invalid':'',
+                               formRegister.get('email')?.touched&&!formRegister.get('email')?.errors ? 'is-valid':''
+                               ]">
                         <label class="form-label" for="inputEmail2">Correo electrónico</label>
+                        @if (formRegister.get("email")?.touched) {
+                            @if (formRegister.get("email")?.errors?.['required']) {
+                                <div>El campo es Obligatorio</div>
+                            }
+                            @if (formRegister.get("email")?.errors?.['emailValidator']) {
+                                <div>Correo no valido</div>
+                            }
+                        }
                     </div>
                     <div class="mb-3 form-floating">
                         <input formControlName="telefono" type="text" id="inputPhone" class="form-control"
@@ -77,9 +114,23 @@
                     </div>
                     <div class="mb-3 form-floating">
                         <input formControlName="password1" type="text" id="inputPassword1" class="form-control"
-                               placeholder="********
-">
+                               placeholder="********" [ngClass]="[
+                               formRegister.get('password1')?.touched&&formRegister.get('password1')?.errors ? 'is-invalid':'',
+                               formRegister.get('password1')?.touched&&!formRegister.get('password1')?.errors ? 'is-valid':''
+                               ]">
                         <label class="form-label" for="inputPassword1">Contraseña</label>
+                        @if (formRegister.get('password1')?.touched) {
+                            @if (formRegister.get("password1")?.errors?.["required"]) {
+                                <div>Este campo es Obligatio</div>
+                            }
+                            @if (formRegister.get("password1")?.errors?.["minlength"]) {
+                                <div>La contraseña debe de tener al menos 5 dígitos</div>
+                            }
+                            @if (formRegister.get("password1")?.errors?.["customPassword"]) {
+                                <div>La contraseña debe tener al menos una minúscula, una mayúscula y un numero.</div>
+                            }
+                        }
+
                     </div>
                     <div class="mb-3 form-floating">
                         <input formControlName="password2" type="text" id="inputPassword2" class="form-control"
@@ -124,7 +175,7 @@
                                placeholder="Pais">
                         <label class="form-label" for="inputPais">Pais</label>
                     </div>
-                    </section>
+                </section>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary d-block text-white py-2 w-100"
                             [disabled]="formRegister.invalid">Entrar

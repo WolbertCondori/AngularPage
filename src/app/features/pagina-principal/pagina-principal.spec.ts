@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaginaPrincipal } from '../../../../public/img/pagina-principal';
+import { PaginaPrincipal } from './pagina-principal';
 
 describe('PaginaPrincipal', () => {
   let component: PaginaPrincipal;
