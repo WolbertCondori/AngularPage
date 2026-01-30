@@ -61,6 +61,7 @@ export class Login implements OnInit{
         this.ciudadesService.getCiudades().subscribe({
             next:(data)=>{
                 this.ciudades = data.data;
+
             },
             error:(err) => {
                 console.log(err);

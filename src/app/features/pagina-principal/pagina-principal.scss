@@ -58,7 +58,19 @@ img{
 .producto{
   div{
     border: solid 1px #e6e6e6;
-    border-radius: 6px;
+    border-radius: 1%;
   }
-  padding: 15px;
+  padding: 2.5%;
+}
+.categorias{
+  flex-direction: row;
+  gap: 2%;
+  overflow: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0 auto;
+  justify-content: center;
+}
+@media (max-width: 1400px) {
+  
 }

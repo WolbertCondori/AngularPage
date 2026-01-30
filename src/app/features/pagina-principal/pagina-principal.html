@@ -29,17 +29,26 @@
     <h2 class="text-center"><b>Productos</b></h2>
     <hr class="w-75 mx-auto">
     </div>
+    <div class=" my-5 categorias">
+        @for(categoria of categorias();track categoria.slug){
+        <button class="btn"
+                [ngClass]="categoria.slug===optCategoria?'btn-primary':'btn-outline-primary'"
+                (click)="changeCategory(categoria.slug)">
+            {{categoria.nombre}}
+        </button>
+        }
+    </div>
     <div id="productos">
-        @for (item of items; track item.name) {
-            <div class="producto">
+        @for (item of copyItems(); track item.slug_producto) {
+            <div class="producto" [ngClass]="optCategoria!=='todos' && optCategoria!==item.slug_categoria?'d-none':''">
                 <div class="bg-white p-4">
-                <img src='{{ item.img }}' alt="imagen del producto {{item.name}}">
+                <img src='{{item.img_producto}}' alt="imagen del producto {{item.nombre}}">
                 </div>
-                <p class="description">{{ item.category }}</p>
-                <p class="h5">{{ item.name }}</p>
-                <p>{{ item.description }}</p>
+                <p class="description">{{ item.categoria }}</p>
+                <p class="h5">{{ item.nombre}}</p>
+                <p>{{ item.descripcion}}</p>
                 <section>
-                    <h4>${{ item.price }}</h4>
+                    <h4>${{ item.precio}}</h4>
                     <button class="btn btn-warning">
                         purchase
                     </button>
