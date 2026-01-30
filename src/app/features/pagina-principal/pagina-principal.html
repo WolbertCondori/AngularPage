@@ -39,7 +39,7 @@
         }
     </div>
     <div id="productos">
-        @for (item of copyItems(); track item.slug_producto) {
+        @for (item of items(); track item.slug_producto) {
             <div class="producto" [ngClass]="optCategoria!=='todos' && optCategoria!==item.slug_categoria?'d-none':''">
                 <div class="bg-white p-4">
                 <img src='{{item.img_producto}}' alt="imagen del producto {{item.nombre}}">
