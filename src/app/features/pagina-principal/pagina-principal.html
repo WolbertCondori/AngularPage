@@ -8,9 +8,8 @@
                 <div class="content">
                     <div class="box-title">
                         <h1 class="fw-normal">
-                            <a class="link">
-                                GameConsole
-                                Destiny Special Edition
+                            <a i18n class="link">
+                                Consola Destiny Edición Especial
                             </a>
                         </h1>
                         <div class="box-price">
@@ -26,7 +25,7 @@
         </div>
     </div>
     <div class="align-content-center">
-    <h2 class="text-center"><b>Productos</b></h2>
+    <h2 i18n class="text-center"><b>Productos</b></h2>
     <hr class="w-75 mx-auto">
     </div>
     <div class=" my-5 categorias">
@@ -44,7 +43,7 @@
                 <div class="bg-white p-4">
                 <img src='{{item.img_producto}}' alt="imagen del producto {{item.nombre}}">
                 </div>
-                <p class="description">{{ item.categoria }}</p>
+                <p class="description">{{item.categoria}}</p>
                 <p class="h5">{{ item.nombre}}</p>
                 <p>{{ item.descripcion}}</p>
                 <section>
@@ -57,5 +56,18 @@
         } @empty {
             <li>There are no items.</li>
         }
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                id="dropdownMenuButton"
+                aria-haspopup="true"
+                aria-expanded="false">
+            Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
     </div>
 </div>

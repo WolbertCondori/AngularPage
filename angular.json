@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "TemplateAngular": {
+      "i18n":{
+        "sourceLocale":"es-ES",
+        "locales": {"en-US": "src/locale/messages.en.xlf"}
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +21,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "localize": ["es-ES"],
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -29,6 +34,12 @@
             "styles": [
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "polyfills": [
+              "@angular/localize/init"
             ]
           },
           "configurations": {
@@ -88,6 +99,12 @@
             "styles": [
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "polyfills": [
+              "@angular/localize/init"
             ]
           }
         }

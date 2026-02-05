@@ -81,7 +81,7 @@ export class PaginaPrincipal implements OnInit {
                     this.alertService.hide();
                 }
             })
-        }, 1500)
+        }, 1)
     }
 
     optCategoria: string = "todos"
@@ -99,4 +99,5 @@ export class PaginaPrincipal implements OnInit {
         }
     }
 
+    protected readonly $localize = $localize;
 }
